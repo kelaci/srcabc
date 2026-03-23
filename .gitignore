@@ -1,0 +1,7 @@
+node_modules
+dist
+.astro
+.wrangler
+node_modules.partial
+node_modules.temp2
+npm-debug.log*

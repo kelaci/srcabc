@@ -1,0 +1,37 @@
+---
+import { processSteps } from "../data/site";
+---
+
+<section id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Operating model</span>
+        <h2>Research -&gt; Prototype -&gt; Transfer</h2>
+      </div>
+      <p>
+        This is the long-term spine of the company. It protects you from becoming either a vague innovation consultant or a commodity implementation shop.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      {
+        processSteps.map((step) => (
+          <article class="process-card reveal">
+            <div class="process-index">{step.index}</div>
+            <div class="micro-label">{step.label}</div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+            <ul class="bullet-list">
+              {
+                step.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))
+              }
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

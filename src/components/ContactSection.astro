@@ -1,0 +1,31 @@
+---
+import { siteMeta } from "../data/site";
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="cta-shell reveal">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Final CTA</span>
+        <h2>Bring the risky idea. Keep the vague brief at home.</h2>
+        <p>
+          The strongest first conversation is usually about a technical decision, a product bet, or a demo that needs to exist before anyone can commit real budget. That is the lane this site should convert for.
+        </p>
+        <div class="contact-meta">
+          <span class="pill">Founder-led conversations</span>
+          <span class="pill">No inflated proof claims</span>
+          <span class="pill">Built for high-signal work</span>
+        </div>
+      </div>
+
+      <div class="cta-actions">
+        <a class="button" href={`mailto:${siteMeta.email}?subject=Project%20inquiry%20for%20SRCABC`}>
+          {siteMeta.email}
+        </a>
+        <button class="button-ghost" data-copy-email data-email={siteMeta.email} type="button">
+          Copy email
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

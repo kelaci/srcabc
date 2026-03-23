@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="SRCABC favicon">
+  <defs>
+    <linearGradient id="g" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b7c4ff"/>
+      <stop offset="1" stop-color="#49e1c0"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#07111f"/>
+  <path d="M35 92V36h18c11.6 0 19 6.2 19 15.8 0 6.3-3.2 11.1-8.8 13.6L76 92H58.6L48.1 68.9H47V92H35Zm12-32.2h5.2c5 0 8-2.6 8-6.8s-3-6.6-8-6.6H47v13.4Z" fill="url(#g)"/>
+  <circle cx="93" cy="40" r="11" fill="url(#g)"/>
+  <circle cx="90" cy="84" r="7" fill="#b7c4ff"/>
+</svg>

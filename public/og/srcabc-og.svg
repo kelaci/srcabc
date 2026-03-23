@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SRCABC Open Graph Image</title>
+  <desc id="desc">Applied research systems studio visual with research, prototype, transfer positioning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="84" y1="48" x2="1110" y2="582" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#091323"/>
+      <stop offset="1" stop-color="#050b16"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b7c4ff"/>
+      <stop offset="1" stop-color="#49e1c0"/>
+    </linearGradient>
+    <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="36"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+  <g opacity=".5">
+    <path d="M0 140H1200" stroke="#ffffff" stroke-opacity=".05"/>
+    <path d="M0 280H1200" stroke="#ffffff" stroke-opacity=".04"/>
+    <path d="M0 420H1200" stroke="#ffffff" stroke-opacity=".04"/>
+    <path d="M0 560H1200" stroke="#ffffff" stroke-opacity=".03"/>
+    <path d="M160 0V630" stroke="#ffffff" stroke-opacity=".04"/>
+    <path d="M360 0V630" stroke="#ffffff" stroke-opacity=".03"/>
+    <path d="M560 0V630" stroke="#ffffff" stroke-opacity=".04"/>
+    <path d="M760 0V630" stroke="#ffffff" stroke-opacity=".03"/>
+    <path d="M960 0V630" stroke="#ffffff" stroke-opacity=".04"/>
+  </g>
+  <circle cx="952" cy="136" r="118" fill="#5a7cff" fill-opacity=".2" filter="url(#blurGlow)"/>
+  <circle cx="284" cy="560" r="120" fill="#49e1c0" fill-opacity=".14" filter="url(#blurGlow)"/>
+  <rect x="82" y="82" width="1036" height="466" rx="28" fill="#0d182b" fill-opacity=".74" stroke="#b7c4ff" stroke-opacity=".12"/>
+  <rect x="118" y="118" width="292" height="46" rx="23" fill="#101d34" stroke="#b7c4ff" stroke-opacity=".16"/>
+  <circle cx="146" cy="141" r="6" fill="#49e1c0"/>
+  <text x="164" y="147" fill="#bcc6dd" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="2.6">APPLIED RESEARCH SYSTEMS STUDIO</text>
+  <text x="118" y="254" fill="#e5ecff" font-family="'DM Serif Display', Georgia, serif" font-size="84">Research first.</text>
+  <text x="118" y="336" fill="#e5ecff" font-family="'DM Serif Display', Georgia, serif" font-size="84">Prototype second.</text>
+  <text x="118" y="418" fill="#b7c4ff" font-family="'DM Serif Display', Georgia, serif" font-size="84">Transfer ready.</text>
+  <text x="118" y="485" fill="#bcc6dd" font-family="Inter, Arial, sans-serif" font-size="28">SRCABC helps founders and engineering teams validate AI, interactive,</text>
+  <text x="118" y="522" fill="#bcc6dd" font-family="Inter, Arial, sans-serif" font-size="28">and systems-level product bets through benchmark-driven research.</text>
+  <g transform="translate(790 186)">
+    <rect width="248" height="232" rx="26" fill="#0a1323" stroke="#b7c4ff" stroke-opacity=".14"/>
+    <rect x="22" y="22" width="58" height="58" rx="18" fill="url(#pill)"/>
+    <text x="41" y="59" fill="#07111f" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700">R</text>
+    <text x="22" y="118" fill="#e5ecff" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">High-signal work</text>
+    <text x="22" y="154" fill="#9caac8" font-family="Inter, Arial, sans-serif" font-size="22">Research sprint</text>
+    <text x="22" y="186" fill="#9caac8" font-family="Inter, Arial, sans-serif" font-size="22">Prototype sprint</text>
+    <text x="22" y="218" fill="#9caac8" font-family="Inter, Arial, sans-serif" font-size="22">System blueprint</text>
+  </g>
+  <g transform="translate(790 442)">
+    <rect width="248" height="58" rx="18" fill="#101d34" stroke="#49e1c0" stroke-opacity=".28"/>
+    <text x="26" y="37" fill="#e5ecff" font-family="JetBrains Mono, monospace" font-size="23">hello@srcabc.com</text>
+  </g>
+</svg>

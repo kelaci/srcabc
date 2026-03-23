@@ -1,0 +1,26 @@
+---
+import ContactSection from "../components/ContactSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import FitSection from "../components/FitSection.astro";
+import HeroSection from "../components/HeroSection.astro";
+import OffersSection from "../components/OffersSection.astro";
+import ProcessSection from "../components/ProcessSection.astro";
+import ProofSection from "../components/ProofSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <SiteHeader />
+  <main id="top">
+    <HeroSection />
+    <OffersSection />
+    <ProcessSection />
+    <ProofSection />
+    <FitSection />
+    <FaqSection />
+    <ContactSection />
+  </main>
+  <SiteFooter />
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+import SeoHead from "../components/SeoHead.astro";
+import scriptUrl from "../scripts/site.client.js?url";
+import stylesUrl from "../styles/global.css?url";
+import { siteMeta } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = siteMeta.defaultPageTitle,
+  description = siteMeta.description,
+  noindex = false,
+} = Astro.props;
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SRCABC",
+  url: siteMeta.url,
+  email: siteMeta.email,
+  description,
+};
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "SRCABC",
+  url: siteMeta.url,
+  email: siteMeta.email,
+  description,
+  areaServed: "Worldwide",
+  serviceType: [
+    "Research sprint",
+    "Prototype sprint",
+    "System blueprint",
+    "Advisory retainer",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: siteMeta.email,
+    contactType: "sales",
+    availableLanguage: ["English"],
+  },
+};
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteMeta.siteName,
+  url: siteMeta.url,
+  description,
+  inLanguage: "en",
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <SeoHead
+      title={title}
+      description={description}
+      pathname={Astro.url.pathname}
+      noindex={noindex}
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline></script>
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} is:inline></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline></script>
+    <link rel="stylesheet" href={stylesUrl} />
+  </head>
+  <body>
+    <slot />
+    <script src={scriptUrl} type="module"></script>
+  </body>
+</html>

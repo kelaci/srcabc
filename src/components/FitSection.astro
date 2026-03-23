@@ -1,0 +1,35 @@
+---
+import { fitCards } from "../data/site";
+---
+
+<section id="fit">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Where this wins</span>
+        <h2>Best fit - and what to avoid.</h2>
+      </div>
+      <p>
+        A long-term position gets stronger when it is selective. The goal is not to say yes to every brief. The goal is to become the obvious choice for a narrow class of high-value problems.
+      </p>
+    </div>
+
+    <div class="fit-grid">
+      {
+        fitCards.map((card) => (
+          <article class="fit-card reveal">
+            <div class="micro-label">{card.label}</div>
+            <h3>{card.title}</h3>
+            <ul class="bullet-list">
+              {
+                card.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))
+              }
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

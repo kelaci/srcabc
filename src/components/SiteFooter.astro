@@ -1,0 +1,39 @@
+---
+import { footerLinks, references } from "../data/site";
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a class="brand" href="#top">src<span>abc</span>.com</a>
+      <p style="max-width: 36rem; margin: 16px 0 0;">
+        Applied research and rapid prototyping for software ideas that are expensive to get wrong.
+      </p>
+      <div class="footer-note">
+        A stronger long-term direction than general dev company: narrower positioning, better authority, cleaner sales, and more defensible IP over time.
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Direct links</h4>
+      <ul class="footer-links">
+        {
+          footerLinks.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Public references</h4>
+      <ul class="footer-links">
+        {
+          references.map((item) => (
+            <li><a href={item.href} rel="noreferrer" target="_blank">{item.label}</a></li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>
