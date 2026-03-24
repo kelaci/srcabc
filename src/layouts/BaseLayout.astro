@@ -1,6 +1,5 @@
 ---
 import SeoHead from "../components/SeoHead.astro";
-import scriptUrl from "../scripts/site.client.js?url";
 import stylesUrl from "../styles/global.css?url";
 import { siteMeta } from "../data/site";
 
@@ -70,6 +69,9 @@ const websiteSchema = {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline></script>
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} is:inline></script>
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline></script>
@@ -77,6 +79,6 @@ const websiteSchema = {
   </head>
   <body>
     <slot />
-    <script src={scriptUrl} type="module"></script>
+    <script src="/scripts/site.client.js" type="module" is:inline></script>
   </body>
 </html>

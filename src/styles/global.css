@@ -644,7 +644,7 @@ section {
 .proof-card h3,
 .process-card h3,
 .fit-card h3,
-.faq-item h3 {
+.faq-question {
   margin: 14px 0 10px;
   font-size: 1.7rem;
   line-height: 1;
@@ -753,7 +753,18 @@ section {
   text-align: left;
 }
 
-.faq-toggle span:last-child {
+.faq-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.faq-question {
+  display: block;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.faq-toggle > span:last-child {
   flex: 0 0 auto;
   color: var(--primary);
   font-size: 1.5rem;
@@ -761,18 +772,25 @@ section {
   transition: transform 160ms ease;
 }
 
-.faq-item.open .faq-toggle span:last-child {
+.faq-item.open .faq-toggle > span:last-child {
   transform: rotate(45deg);
 }
 
 .faq-answer {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 220ms ease,
+    margin-top 220ms ease;
+}
+
+.faq-answer-inner {
+  min-height: 0;
   overflow: hidden;
-  transition: max-height 220ms ease, margin-top 220ms ease;
 }
 
 .faq-item.open .faq-answer {
-  max-height: 180px;
+  grid-template-rows: 1fr;
   margin-top: 14px;
 }
 
@@ -869,13 +887,13 @@ section {
   font-size: 0.92rem;
 }
 
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 500ms ease, transform 500ms ease;
 }
 
-.reveal.in-view {
+.js .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
@@ -977,6 +995,19 @@ section {
 
   .cta-actions {
     justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .reveal,
+  .js .reveal.in-view {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

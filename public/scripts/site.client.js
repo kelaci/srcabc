@@ -1,33 +1,40 @@
-const initSite = () => {
+const setPressedState = (buttons, activeButton) => {
+  buttons.forEach((button) => {
+    const isActive = button === activeButton;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+};
+
+const initMobileNav = () => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMobile = document.querySelector("[data-nav-mobile]");
 
-  if (navToggle instanceof HTMLButtonElement && navMobile instanceof HTMLElement) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navMobile.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    navMobile.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navMobile.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
-    });
+  if (!(navToggle instanceof HTMLButtonElement) || !(navMobile instanceof HTMLElement)) {
+    return;
   }
 
+  navToggle.addEventListener("click", () => {
+    const isOpen = navMobile.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navMobile.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMobile.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+};
+
+const initOfferFilters = () => {
   const tabButtons = Array.from(document.querySelectorAll("[data-offer-tab]"));
   const offerCards = Array.from(document.querySelectorAll("[data-offer-card]"));
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filter = button.getAttribute("data-offer-tab");
-
-      tabButtons.forEach((tab) => {
-        const isActive = tab === button;
-        tab.classList.toggle("active", isActive);
-        tab.setAttribute("aria-selected", String(isActive));
-      });
+      setPressedState(tabButtons, button);
 
       offerCards.forEach((card) => {
         const kinds = (card.getAttribute("data-kind") || "").split(" ");
@@ -37,12 +44,13 @@ const initSite = () => {
       });
     });
   });
+};
 
+const initFaq = () => {
   const faqItems = Array.from(document.querySelectorAll("[data-faq-item]"));
   faqItems.forEach((item) => {
     const toggle = item.querySelector("[data-faq-toggle]");
-    const answer = item.querySelector("[data-faq-answer]");
-    if (!(toggle instanceof HTMLButtonElement) || !(answer instanceof HTMLElement)) {
+    if (!(toggle instanceof HTMLButtonElement)) {
       return;
     }
 
@@ -51,24 +59,43 @@ const initSite = () => {
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
   });
+};
 
+const initCopyEmail = () => {
   const copyEmailBtn = document.querySelector("[data-copy-email]");
-  if (copyEmailBtn instanceof HTMLButtonElement) {
-    copyEmailBtn.addEventListener("click", async () => {
-      const email = copyEmailBtn.getAttribute("data-email");
-      if (!email) return;
+  if (!(copyEmailBtn instanceof HTMLButtonElement)) {
+    return;
+  }
 
-      try {
-        await navigator.clipboard.writeText(email);
-        const original = copyEmailBtn.textContent;
-        copyEmailBtn.textContent = "Copied";
-        window.setTimeout(() => {
-          copyEmailBtn.textContent = original;
-        }, 1400);
-      } catch {
-        window.location.href = `mailto:${email}`;
-      }
-    });
+  copyEmailBtn.addEventListener("click", async () => {
+    const email = copyEmailBtn.getAttribute("data-email");
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      const original = copyEmailBtn.textContent;
+      copyEmailBtn.textContent = "Copied";
+      window.setTimeout(() => {
+        copyEmailBtn.textContent = original;
+      }, 1400);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+};
+
+const initRevealAnimations = () => {
+  const revealElements = Array.from(document.querySelectorAll(".reveal"));
+  if (!revealElements.length) {
+    return;
+  }
+
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    revealElements.forEach((element) => element.classList.add("in-view"));
+    return;
   }
 
   const observer = new IntersectionObserver(
@@ -83,10 +110,15 @@ const initSite = () => {
     { threshold: 0.12 }
   );
 
-  document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  revealElements.forEach((element) => observer.observe(element));
+};
 
+const initActiveNavState = () => {
   const sections = Array.from(document.querySelectorAll("main section[id]"));
   const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+  if (!sections.length || !navLinks.length) {
+    return;
+  }
 
   const setActiveLink = () => {
     const y = window.scrollY + 120;
@@ -107,6 +139,15 @@ const initSite = () => {
 
   window.addEventListener("scroll", setActiveLink, { passive: true });
   setActiveLink();
+};
+
+const initSite = () => {
+  initMobileNav();
+  initOfferFilters();
+  initFaq();
+  initCopyEmail();
+  initRevealAnimations();
+  initActiveNavState();
 };
 
 if (document.readyState === "loading") {

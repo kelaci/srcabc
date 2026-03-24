@@ -14,14 +14,13 @@ import { offerTabs, offers } from "../data/site";
       </p>
     </div>
 
-    <div class="offer-tabs reveal" role="tablist" aria-label="Offer categories">
+    <div class="offer-tabs reveal" aria-label="Offer categories" role="group">
       {
         offerTabs.map((tab, index) => (
           <button
-            aria-selected={index === 0 ? "true" : "false"}
+            aria-pressed={index === 0 ? "true" : "false"}
             class:list={["tab-btn", index === 0 && "active"]}
             data-offer-tab={tab.id}
-            role="tab"
             type="button"
           >
             {tab.label}

@@ -19,6 +19,7 @@ npm run dev
 ## Checks
 
 ```bash
+npm run check
 npm run build
 npm run lint
 ```
@@ -43,3 +44,5 @@ Recommended setup is Git integration:
 Because this repository contains only the site, leave the Pages Root directory empty.
 
 Cloudflare’s Git integration guide documents automatic rebuilds from the selected production branch and the build/output/root settings used during setup.
+
+For local parity with production, use the version in `.nvmrc` before running `npm ci`.

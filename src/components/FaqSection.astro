@@ -18,24 +18,32 @@ import { faqItems } from "../data/site";
       {
         faqItems.map((item, index) => {
           const answerId = `faq-answer-${index}`;
+          const buttonId = `faq-toggle-${index}`;
           const isOpen = index === 0;
           return (
             <article class:list={["faq-item", "reveal", isOpen && "open"]} data-faq-item>
               <button
+                id={buttonId}
                 aria-controls={answerId}
                 aria-expanded={isOpen ? "true" : "false"}
                 class="faq-toggle"
                 data-faq-toggle
                 type="button"
               >
-                <span>
-                  <div class="micro-label">{item.label}</div>
-                  <h3>{item.question}</h3>
+                <span class="faq-copy">
+                  <span class="micro-label">{item.label}</span>
+                  <span class="faq-question">{item.question}</span>
                 </span>
-                <span>+</span>
+                <span aria-hidden="true">+</span>
               </button>
-              <div class="faq-answer" data-faq-answer id={answerId}>
-                {item.answer}
+              <div
+                aria-labelledby={buttonId}
+                class="faq-answer"
+                data-faq-answer
+                id={answerId}
+                role="region"
+              >
+                <div class="faq-answer-inner">{item.answer}</div>
               </div>
             </article>
           );

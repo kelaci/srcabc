@@ -2,35 +2,43 @@
   "name": "srcabc",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "overrides": {
+    "devalue": "5.6.4",
+    "flatted": "3.4.2",
+    "h3": "1.15.9",
+    "rollup": "4.60.0",
+    "svgo": "4.0.1"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check": "astro check",
+    "validate": "npm run lint && npm run check && npm run build"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.16.15",
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^5.18.1",
     "astro-seo": "^1.1.0",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "@typescript-eslint/eslint-plugin": "^8.53.1",
-    "@typescript-eslint/parser": "^8.53.1",
-    "astro-eslint-parser": "^1.2.2",
-    "eslint": "^9.39.2",
-    "eslint-plugin-astro": "^1.5.0",
-    "globals": "^17.1.0",
-    "typescript-eslint": "^8.53.1",
-    "wrangler": "4.61.0"
+    "@astrojs/check": "^0.9.8",
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro-eslint-parser": "^1.4.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-astro": "^1.6.0",
+    "globals": "^17.4.0",
+    "typescript-eslint": "^8.57.2",
+    "wrangler": "^4.77.0"
   }
 }
