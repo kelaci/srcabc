@@ -1,5 +1,5 @@
 ---
-import { footerLinks, references } from "../data/site";
+import { footerLinks, references, siteMeta } from "../data/site";
 ---
 
 <footer class="footer">
@@ -22,6 +22,7 @@ import { footerLinks, references } from "../data/site";
             <li><a href={item.href}>{item.label}</a></li>
           ))
         }
+        <li><a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a></li>
       </ul>
     </div>
 

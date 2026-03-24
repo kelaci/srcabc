@@ -1,5 +1,5 @@
 ---
-import { navItems } from "../data/site";
+import { siteMeta, navItems } from "../data/site";
 ---
 
 <div class="nav-wrap">
@@ -16,7 +16,7 @@ import { navItems } from "../data/site";
 
     <div class="nav-actions">
       <a class="button-ghost" href="#proof">View proof</a>
-      <a class="button" href="#contact">Start a conversation</a>
+      <a class="button" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
       <button
         aria-controls="navMobile"
         aria-expanded="false"
@@ -38,6 +38,6 @@ import { navItems } from "../data/site";
         <a href={item.href}>{item.label}</a>
       ))
     }
-    <a href="#contact">Contact</a>
+    <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
   </div>
 </div>
