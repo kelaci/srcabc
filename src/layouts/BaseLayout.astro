@@ -1,56 +1,27 @@
 ---
 import SeoHead from "../components/SeoHead.astro";
+import { siteMeta } from "../config/site";
 import stylesUrl from "../styles/global.css?url";
-import { siteMeta } from "../data/site";
+import type { StructuredData } from "../types/site";
+import { buildDefaultStructuredData } from "../utils/structuredData";
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  structuredData?: StructuredData[];
 }
 
 const {
   title = siteMeta.defaultPageTitle,
   description = siteMeta.description,
   noindex = false,
+  structuredData,
 } = Astro.props;
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "SRCABC",
-  url: siteMeta.url,
-  email: siteMeta.email,
-  description,
-};
-const serviceSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "SRCABC",
-  url: siteMeta.url,
-  email: siteMeta.email,
-  description,
-  areaServed: "Worldwide",
-  serviceType: [
-    "Research sprint",
-    "Prototype sprint",
-    "System blueprint",
-    "Advisory retainer",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: siteMeta.email,
-    contactType: "sales",
-    availableLanguage: ["English"],
-  },
-};
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: siteMeta.siteName,
-  url: siteMeta.url,
-  description,
-  inLanguage: "en",
-};
+
+const resolvedStructuredData = noindex
+  ? []
+  : structuredData ?? buildDefaultStructuredData({ description });
 ---
 
 <!doctype html>
@@ -66,18 +37,22 @@ const websiteSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline></script>
-    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} is:inline></script>
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline></script>
+    {
+      resolvedStructuredData.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+      ))
+    }
     <link rel="stylesheet" href={stylesUrl} />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="top"></div>
     <slot />
     <script src="/scripts/site.client.js" type="module" is:inline></script>
   </body>

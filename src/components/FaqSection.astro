@@ -1,22 +1,25 @@
 ---
-import { faqItems } from "../data/site";
+import SectionIntro from "./common/SectionIntro.astro";
+import type { FaqSectionContent } from "../types/site";
+
+interface Props {
+  content: FaqSectionContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section id="faq">
   <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> FAQ</span>
-        <h2>Questions a serious buyer will actually ask.</h2>
-      </div>
-      <p>
-        This section helps the site behave more like a sales asset and less like a moodboard.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+    />
 
     <div class="faq-grid">
       {
-        faqItems.map((item, index) => {
+        content.items.map((item, index) => {
           const answerId = `faq-answer-${index}`;
           const buttonId = `faq-toggle-${index}`;
           const isOpen = index === 0;

@@ -1,28 +1,30 @@
 ---
-import { footerLinks, references, siteMeta } from "../data/site";
+import type { FooterContent } from "../types/site";
+
+interface Props {
+  content: FooterContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-col">
       <a class="brand" href="#top">src<span>abc</span>.com</a>
-      <p style="max-width: 36rem; margin: 16px 0 0;">
-        Applied research and rapid prototyping for software ideas that are expensive to get wrong.
-      </p>
-      <div class="footer-note">
-        A stronger long-term direction than general dev company: narrower positioning, better authority, cleaner sales, and more defensible IP over time.
-      </div>
+      <p style="max-width: 36rem; margin: 16px 0 0;">{content.summary}</p>
+      <div class="footer-note">{content.note}</div>
     </div>
 
     <div class="footer-col">
       <h4>Direct links</h4>
       <ul class="footer-links">
         {
-          footerLinks.map((item) => (
+          content.links.map((item) => (
             <li><a href={item.href}>{item.label}</a></li>
           ))
         }
-        <li><a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a></li>
+        <li><a href={content.contactAction.href}>{content.contactAction.label}</a></li>
       </ul>
     </div>
 
@@ -30,7 +32,7 @@ import { footerLinks, references, siteMeta } from "../data/site";
       <h4>Public references</h4>
       <ul class="footer-links">
         {
-          references.map((item) => (
+          content.references.map((item) => (
             <li><a href={item.href} rel="noreferrer" target="_blank">{item.label}</a></li>
           ))
         }

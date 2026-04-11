@@ -1,22 +1,25 @@
 ---
-import { offerTabs, offers } from "../data/site";
+import SectionIntro from "./common/SectionIntro.astro";
+import type { OffersSectionContent } from "../types/site";
+
+interface Props {
+  content: OffersSectionContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section id="offers">
   <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> What you can buy</span>
-        <h2>Productized offers instead of vague consulting.</h2>
-      </div>
-      <p>
-        The site should not sell smartness. It should sell a sharper decision, a faster validation loop, and a more persuasive output. These four offers give the business a clean ladder from first engagement to long-term advisory.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+    />
 
     <div class="offer-tabs reveal" aria-label="Offer categories" role="group">
       {
-        offerTabs.map((tab, index) => (
+        content.tabs.map((tab, index) => (
           <button
             aria-pressed={index === 0 ? "true" : "false"}
             class:list={["tab-btn", index === 0 && "active"]}
@@ -31,7 +34,7 @@ import { offerTabs, offers } from "../data/site";
 
     <div class="offers-grid">
       {
-        offers.map((offer) => (
+        content.items.map((offer) => (
           <article
             aria-hidden="false"
             class:list={[

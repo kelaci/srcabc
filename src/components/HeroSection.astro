@@ -1,34 +1,39 @@
 ---
-import { coreCards, heroMetrics, siteMeta } from "../data/site";
+import type { HeroContent } from "../types/site";
+
+interface Props {
+  content: HeroContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy reveal">
-      <span class="eyebrow"><span class="dot"></span> Applied research systems studio</span>
-      <h1>Software ideas that are expensive to get <span class="accent">wrong.</span></h1>
-      <p class="lead">
-        SRCABC helps founders and engineering teams validate AI, interactive, and systems-level product bets through benchmark-driven research, working prototypes, and build-ready architecture.
-      </p>
+      <span class="eyebrow"><span class="dot"></span> {content.eyebrow}</span>
+      <h1>{content.titleLead} <span class="accent">{content.titleAccent}</span></h1>
+      <p class="lead">{content.intro}</p>
 
       <div class="hero-actions">
-        <a class="button" href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
-        <a class="button-ghost" href="#proof">See public work</a>
+        <a class="button" href={content.primaryAction.href}>{content.primaryAction.label}</a>
+        <a class="button-ghost" href={content.secondaryAction.href}>{content.secondaryAction.label}</a>
       </div>
 
       <div class="signal-strip">
-        <strong>What you buy:</strong>
+        <strong>{content.signalLabel}</strong>
         <div class="signal-list">
-          <span class="pill">Research sprint</span>
-          <span class="pill">Working prototype</span>
-          <span class="pill">System blueprint</span>
-          <span class="pill">Founder / CTO advisory</span>
+          {
+            content.signalItems.map((item) => (
+              <span class="pill">{item}</span>
+            ))
+          }
         </div>
       </div>
 
       <div class="hero-proof">
         {
-          heroMetrics.map((metric) => (
+          content.metrics.map((metric) => (
             <div class="metric">
               <div class="label">{metric.label}</div>
               <strong>{metric.title}</strong>
@@ -41,24 +46,26 @@ import { coreCards, heroMetrics, siteMeta } from "../data/site";
 
     <aside class="hero-panel reveal">
       <div class="hero-panel-top">
-        <span class="status-chip"><span class="mini-dot"></span> Founder-led</span>
-        <span class="status-chip">High-signal engagements</span>
+        {
+          content.statusChips.map((status, index) => (
+            <span class="status-chip">
+              {index === 0 && <span class="mini-dot"></span>}
+              {status}
+            </span>
+          ))
+        }
       </div>
 
       <div>
-        <div class="micro-label">Core model</div>
-        <h2 class="hero-panel-title">Research-led delivery.</h2>
-        <p class="hero-panel-kicker">
-          Applied research first. Beautiful execution second. Commodity work never.
-        </p>
-        <p class="hero-panel-copy">
-          This is not a generic dev shop and not a pure think tank. SRCABC is strongest when the project needs sharp technical judgment, a convincing demo, and a final recommendation the client can actually build on.
-        </p>
+        <div class="micro-label">{content.panelLabel}</div>
+        <h2 class="hero-panel-title">{content.panelTitle}</h2>
+        <p class="hero-panel-kicker">{content.panelKicker}</p>
+        <p class="hero-panel-copy">{content.panelCopy}</p>
       </div>
 
       <div class="hero-stack">
         {
-          coreCards.map((card) => (
+          content.coreCards.map((card) => (
             <article class="stack-card">
               <div class="stack-icon">{card.icon}</div>
               <strong>{card.title}</strong>
@@ -69,7 +76,7 @@ import { coreCards, heroMetrics, siteMeta } from "../data/site";
       </div>
 
       <div class="panel-note">
-        <strong>Best fit:</strong> early product bets, AI features with unclear UX or architecture, premium technical showcases, internal tools that need strategic clarity, and R&amp;D-heavy concepts that must become legible to buyers or stakeholders.
+        <strong>Best fit:</strong> {content.panelNote}
       </div>
     </aside>
   </div>

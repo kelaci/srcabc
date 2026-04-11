@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Page not found" noindex={true}>
-  <main class="container" style="padding: 96px 0 120px;">
+<BaseLayout title="Page not found" noindex={true} structuredData={[]}>
+  <main id="main-content" tabindex="-1" class="container" style="padding: 96px 0 120px;">
     <div class="section-card" style="padding: 40px;">
       <span class="eyebrow"><span class="dot"></span> 404</span>
       <h1 style="font-size: clamp(2.8rem, 8vw, 5rem); margin-bottom: 16px;">Page not found.</h1>

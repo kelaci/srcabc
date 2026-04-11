@@ -8,19 +8,21 @@ import ProcessSection from "../components/ProcessSection.astro";
 import ProofSection from "../components/ProofSection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import { footerContent, headerContent } from "../data/navigation";
+import { homePageData } from "../data/pages/home";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <SiteHeader />
-  <main id="top">
-    <HeroSection />
-    <OffersSection />
-    <ProcessSection />
-    <ProofSection />
-    <FitSection />
-    <FaqSection />
-    <ContactSection />
+  <SiteHeader content={headerContent} />
+  <main id="main-content" tabindex="-1">
+    <HeroSection content={homePageData.hero} />
+    <OffersSection content={homePageData.offers} />
+    <ProcessSection content={homePageData.process} />
+    <ProofSection content={homePageData.proof} />
+    <FitSection content={homePageData.fit} />
+    <FaqSection content={homePageData.faq} />
+    <ContactSection content={homePageData.contact} />
   </main>
-  <SiteFooter />
+  <SiteFooter content={footerContent} />
 </BaseLayout>

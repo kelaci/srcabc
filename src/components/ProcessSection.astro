@@ -1,22 +1,25 @@
 ---
-import { processSteps } from "../data/site";
+import SectionIntro from "./common/SectionIntro.astro";
+import type { ProcessSectionContent } from "../types/site";
+
+interface Props {
+  content: ProcessSectionContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section id="process">
   <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> Operating model</span>
-        <h2>Research -&gt; Prototype -&gt; Transfer</h2>
-      </div>
-      <p>
-        This is the long-term spine of the company. It protects you from becoming either a vague innovation consultant or a commodity implementation shop.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+    />
 
     <div class="process-grid">
       {
-        processSteps.map((step) => (
+        content.steps.map((step) => (
           <article class="process-card reveal">
             <div class="process-index">{step.index}</div>
             <div class="micro-label">{step.label}</div>

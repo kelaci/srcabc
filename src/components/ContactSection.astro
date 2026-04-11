@@ -1,30 +1,45 @@
 ---
-import { siteMeta } from "../data/site";
+import type { ContactSectionContent } from "../types/site";
+
+interface Props {
+  content: ContactSectionContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section id="contact">
   <div class="container">
     <div class="cta-shell reveal">
       <div>
-        <span class="eyebrow"><span class="dot"></span> Final CTA</span>
-        <h2>Bring the risky idea. Keep the vague brief at home.</h2>
-        <p>
-          The strongest first conversation is usually about a technical decision, a product bet, or a demo that needs to exist before anyone can commit real budget. That is the lane this site should convert for.
-        </p>
+        <span class="eyebrow"><span class="dot"></span> {content.eyebrow}</span>
+        <h2>{content.title}</h2>
+        <p>{content.description}</p>
         <div class="contact-meta">
-          <span class="pill">Founder-led conversations</span>
-          <span class="pill">No inflated proof claims</span>
-          <span class="pill">Built for high-signal work</span>
+          {
+            content.pills.map((pill) => (
+              <span class="pill">{pill}</span>
+            ))
+          }
         </div>
       </div>
 
       <div class="cta-actions">
-        <a class="button" href={`mailto:${siteMeta.email}`}>
-          {siteMeta.email}
+        <a class="button" href={content.primaryAction.href}>
+          {content.primaryAction.label}
         </a>
-        <button class="button-ghost" data-copy-email data-email={siteMeta.email} type="button">
-          Copy email
+        <button
+          aria-describedby="copy-email-status"
+          aria-label={`Copy email address ${content.primaryAction.label}`}
+          class="button-ghost"
+          data-copy-email
+          data-copy-success={content.copyAnnouncement}
+          data-email={content.primaryAction.label}
+          type="button"
+        >
+          {content.copyButtonLabel}
         </button>
+        <p class="sr-only" id="copy-email-status" aria-live="polite" role="status" data-copy-status></p>
       </div>
     </div>
   </div>

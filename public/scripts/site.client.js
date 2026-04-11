@@ -6,6 +6,13 @@ const setPressedState = (buttons, activeButton) => {
   });
 };
 
+const setNavOpenState = (navToggle, navMobile, isOpen) => {
+  navMobile.hidden = !isOpen;
+  navMobile.classList.toggle("open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+};
+
 const initMobileNav = () => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMobile = document.querySelector("[data-nav-mobile]");
@@ -14,16 +21,37 @@ const initMobileNav = () => {
     return;
   }
 
+  const closeNav = () => setNavOpenState(navToggle, navMobile, false);
+  const toggleNav = () => setNavOpenState(navToggle, navMobile, navMobile.hidden);
+
+  closeNav();
+
   navToggle.addEventListener("click", () => {
-    const isOpen = navMobile.classList.toggle("open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
+    toggleNav();
   });
 
   navMobile.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      navMobile.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
+      closeNav();
     });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !navMobile.hidden) {
+      closeNav();
+      navToggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      !navMobile.hidden &&
+      event.target instanceof Node &&
+      !navMobile.contains(event.target) &&
+      !navToggle.contains(event.target)
+    ) {
+      closeNav();
+    }
   });
 };
 
@@ -63,22 +91,38 @@ const initFaq = () => {
 
 const initCopyEmail = () => {
   const copyEmailBtn = document.querySelector("[data-copy-email]");
+  const copyStatus = document.querySelector("[data-copy-status]");
   if (!(copyEmailBtn instanceof HTMLButtonElement)) {
     return;
   }
 
+  const setCopyStatus = (message) => {
+    if (!(copyStatus instanceof HTMLElement)) {
+      return;
+    }
+
+    copyStatus.textContent = "";
+    window.requestAnimationFrame(() => {
+      copyStatus.textContent = message;
+    });
+  };
+
   copyEmailBtn.addEventListener("click", async () => {
     const email = copyEmailBtn.getAttribute("data-email");
+    const successMessage =
+      copyEmailBtn.getAttribute("data-copy-success") || "Email copied to clipboard.";
     if (!email) return;
 
     try {
       await navigator.clipboard.writeText(email);
       const original = copyEmailBtn.textContent;
       copyEmailBtn.textContent = "Copied";
+      setCopyStatus(successMessage);
       window.setTimeout(() => {
         copyEmailBtn.textContent = original;
       }, 1400);
     } catch {
+      setCopyStatus("Opening email client.");
       window.location.href = `mailto:${email}`;
     }
   });
@@ -134,6 +178,11 @@ const initActiveNavState = () => {
     navLinks.forEach((link) => {
       const match = link.getAttribute("href") === `#${currentId}`;
       link.classList.toggle("active", match);
+      if (match) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
   };
 

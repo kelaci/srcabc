@@ -6,8 +6,16 @@ Static Astro site for `srcabc.com`.
 
 - Astro 5
 - Tailwind CSS v4 via Vite
-- `astro-seo` for centralized metadata
+- first-party Astro head/SEO component
 - Cloudflare Pages deployment target
+
+## Architecture
+
+- `site.config.mjs` is the canonical source for site metadata shared by Astro config and app code.
+- `src/data/navigation.ts` holds shared navigation and footer content.
+- `src/data/pages/home.ts` holds the home page content model.
+- `src/utils/structuredData.ts` builds reusable JSON-LD payloads for layouts/pages.
+- Presentational components receive typed props instead of importing a monolithic data file.
 
 ## Local development
 

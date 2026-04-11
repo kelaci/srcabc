@@ -1,6 +1,5 @@
 ---
-import { SEO } from "astro-seo";
-import { siteMeta } from "../data/site";
+import { siteMeta } from "../config/site";
 
 interface Props {
   title?: string;
@@ -20,58 +19,49 @@ const {
 
 const canonical = new URL(pathname, Astro.site ?? siteMeta.url).href;
 const imageUrl = new URL(image, Astro.site ?? siteMeta.url).href;
+const pageTitle = siteMeta.titleTemplate.replace("%s", title);
+const robotsContent = [
+  noindex ? "noindex" : "index",
+  "follow",
+  "max-snippet:-1",
+  "max-image-preview:large",
+  "max-video-preview:-1",
+].join(", ");
 ---
 
-<SEO
-  charset="UTF-8"
-  canonical={canonical}
-  description={description}
-  noindex={noindex}
-  openGraph={{
-    basic: {
-      title: `${title} | ${siteMeta.siteName}`,
-      type: "website",
-      image: imageUrl,
-      url: canonical,
-    },
-    optional: {
-      description,
-      locale: siteMeta.locale,
-      siteName: siteMeta.siteName,
-    },
-    image: {
-      alt: siteMeta.ogImageAlt,
-      width: 1200,
-      height: 630,
-      type: "image/png",
-    },
-  }}
-  robotsExtras="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-  title={title}
-  titleDefault={siteMeta.defaultPageTitle}
-  titleTemplate={siteMeta.titleTemplate}
-  twitter={{
-    card: "summary_large_image",
-    title: `${title} | ${siteMeta.siteName}`,
-    description,
-    image: imageUrl,
-    imageAlt: siteMeta.ogImageAlt,
-  }}
-  extend={{
-    link: [
-      { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "icon", href: "/favicon.ico", sizes: "any" },
-      { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
-    ],
-    meta: [
-      { name: "theme-color", content: "#07111f" },
-      { name: "application-name", content: siteMeta.siteName },
-      { name: "apple-mobile-web-app-title", content: siteMeta.siteName },
-      { name: "keywords", content: siteMeta.keywords.join(", ") },
-      { property: "og:image:secure_url", content: imageUrl },
-    ],
-  }}
-/>
+<meta charset="UTF-8" />
+<title>{pageTitle}</title>
+<link rel="canonical" href={canonical} />
+<meta name="description" content={description} />
+<meta name="robots" content={robotsContent} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={siteMeta.locale} />
+<meta property="og:site_name" content={siteMeta.siteName} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:secure_url" content={imageUrl} />
+<meta property="og:image:alt" content={siteMeta.ogImageAlt} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={siteMeta.ogImageAlt} />
+
+<meta name="theme-color" content="#07111f" />
+<meta name="application-name" content={siteMeta.siteName} />
+<meta name="apple-mobile-web-app-title" content={siteMeta.siteName} />
+<meta name="keywords" content={siteMeta.keywords.join(", ")} />
+
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />

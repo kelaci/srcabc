@@ -1,22 +1,25 @@
 ---
-import { proofItems } from "../data/site";
+import SectionIntro from "./common/SectionIntro.astro";
+import type { ProofSectionContent } from "../types/site";
+
+interface Props {
+  content: ProofSectionContent;
+}
+
+const { content } = Astro.props;
 ---
 
 <section id="proof">
   <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> Public proof</span>
-        <h2>Show the work. Then ask for trust.</h2>
-      </div>
-      <p>
-        A new studio should not lead with inflated claims. It should lead with visible evidence. These public references support the long-term positioning far better than generic agency language ever could.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+    />
 
     <div class="proof-grid">
       {
-        proofItems.map((item) => (
+        content.items.map((item) => (
           <article class="proof-card reveal">
             <div class="offer-meta">
               {
@@ -28,8 +31,8 @@ import { proofItems } from "../data/site";
             <h3>{item.title}</h3>
             <p>{item.description}</p>
             <div class="proof-links">
-              <a class="button-line" href={item.linkHref} rel="noreferrer" target="_blank">
-                {item.linkLabel}
+              <a class="button-line" href={item.link.href} rel="noreferrer" target="_blank">
+                {item.link.label}
               </a>
             </div>
           </article>
