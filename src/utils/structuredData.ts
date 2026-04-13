@@ -50,14 +50,6 @@ export const buildDefaultStructuredData = (
       url: siteMeta.url,
       description,
       inLanguage: "en",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteMeta.url}/search?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
   ];
 

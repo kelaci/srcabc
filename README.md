@@ -4,7 +4,7 @@ Static Astro site for `srcabc.com`.
 
 ## Stack
 
-- Astro 5
+- Astro 6
 - Tailwind CSS v4 via Vite
 - first-party Astro head/SEO component
 - Cloudflare Pages deployment target
