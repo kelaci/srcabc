@@ -13,7 +13,7 @@ import { homePageData } from "../data/pages/home";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
+<BaseLayout faqItems={homePageData.faq.items}>
   <SiteHeader content={headerContent} />
   <main id="main-content" tabindex="-1">
     <HeroSection content={homePageData.hero} />

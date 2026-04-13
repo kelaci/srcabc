@@ -32,7 +32,7 @@ export const footerContent: FooterContent = {
   references: [
     { href: "https://github.com/kelaci/orthos", label: "GitHub - ORTHOS ->" },
     { href: "https://prism.srcabc.com/", label: "Prism ->" },
-    { href: "https://lakas.mindig.online/en/", label: "Luxury showcase ->" },
+    { href: "https://notabot.srcabc.com/", label: "notabot ->" },
   ],
   contactAction,
 };

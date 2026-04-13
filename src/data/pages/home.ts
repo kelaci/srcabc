@@ -208,11 +208,11 @@ export const homePageData: HomePageData = {
         link: { href: "https://prism.srcabc.com/", label: "Open project ->" },
       },
       {
-        title: "Luxury Property Showcase",
+        title: "notabot",
         description:
-          "A polished, high-trust digital experience. This is the evidence that SRCABC can package technology into something stakeholders actually want to look at, share, and buy through.",
-        meta: ["Premium showcase", "Narrative execution"],
-        link: { href: "https://lakas.mindig.online/en/", label: "View experience ->" },
+          "A robust, next-generation CAPTCHA and bot detection system. This demonstrates deep expertise in browser environment analysis, timing heuristics, and securing public interfaces against automated abuse.",
+        meta: ["Security", "Bot detection"],
+        link: { href: "https://notabot.srcabc.com/", label: "View notabot ->" },
       },
     ],
   },

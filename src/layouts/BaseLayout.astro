@@ -2,7 +2,7 @@
 import SeoHead from "../components/SeoHead.astro";
 import { siteMeta } from "../config/site";
 import stylesUrl from "../styles/global.css?url";
-import type { StructuredData } from "../types/site";
+import type { FaqItem, StructuredData } from "../types/site";
 import { buildDefaultStructuredData } from "../utils/structuredData";
 
 interface Props {
@@ -10,6 +10,10 @@ interface Props {
   description?: string;
   noindex?: boolean;
   structuredData?: StructuredData[];
+  faqItems?: FaqItem[];
+  breadcrumbItems?: { name: string; url: string }[];
+  canonical?: string;
+  image?: string;
 }
 
 const {
@@ -17,11 +21,21 @@ const {
   description = siteMeta.description,
   noindex = false,
   structuredData,
+  faqItems,
+  breadcrumbItems,
+  canonical,
+  image,
 } = Astro.props;
 
 const resolvedStructuredData = noindex
   ? []
-  : structuredData ?? buildDefaultStructuredData({ description });
+  : structuredData ?? buildDefaultStructuredData({
+      description,
+      faqItems,
+      breadcrumbItems: breadcrumbItems ?? [
+        { name: "Home", url: siteMeta.url },
+      ],
+    });
 ---
 
 <!doctype html>
@@ -33,6 +47,8 @@ const resolvedStructuredData = noindex
       description={description}
       pathname={Astro.url.pathname}
       noindex={noindex}
+      canonical={canonical}
+      image={image}
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,7 +61,7 @@ const resolvedStructuredData = noindex
     </script>
     {
       resolvedStructuredData.map((schema) => (
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+        <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} is:inline />
       ))
     }
     <link rel="stylesheet" href={stylesUrl} />

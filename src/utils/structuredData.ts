@@ -1,16 +1,16 @@
 import { siteMeta } from "../config/site";
-import type { StructuredData } from "../types/site";
+import type { FaqItem, StructuredData } from "../types/site";
 
 interface StructuredDataOptions {
   description?: string;
+  faqItems?: FaqItem[];
+  breadcrumbItems?: { name: string; url: string }[];
 }
-
 export const buildDefaultStructuredData = (
   options: StructuredDataOptions = {}
 ): StructuredData[] => {
   const description = options.description ?? siteMeta.description;
-
-  return [
+  const schemas: StructuredData[] = [
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -18,6 +18,9 @@ export const buildDefaultStructuredData = (
       url: siteMeta.url,
       email: siteMeta.email,
       description,
+      sameAs: [
+        "https://twitter.com/srcabc",
+      ],
     },
     {
       "@context": "https://schema.org",
@@ -47,6 +50,44 @@ export const buildDefaultStructuredData = (
       url: siteMeta.url,
       description,
       inLanguage: "en",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteMeta.url}/search?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
   ];
+
+  if (options.breadcrumbItems && options.breadcrumbItems.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: options.breadcrumbItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: item.url,
+      })),
+    });
+  }
+
+  if (options.faqItems && options.faqItems.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: options.faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    });
+  }
+
+  return schemas;
 };
