@@ -49,7 +49,7 @@ Recommended setup is Git integration:
 - Build output directory: `dist`
 - Node version: `22`
 
-Because this repository contains only the site, leave the Pages Root directory empty.
+Because this repository contains only the site, leave the Pages Root directory empty. 
 
 Cloudflare’s Git integration guide documents automatic rebuilds from the selected production branch and the build/output/root settings used during setup.
 
