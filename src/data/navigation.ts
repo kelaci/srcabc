@@ -14,15 +14,14 @@ export const headerContent: HeaderContent = {
     { href: "#fit", label: "Fit" },
     { href: "#faq", label: "FAQ" },
   ],
-  secondaryAction: { href: "#proof", label: "See Proof" },
   contactAction,
 };
 
 export const footerContent: FooterContent = {
   summary:
-    "Applied research and rapid prototyping for software ideas that are expensive to get wrong.",
+    "Applied research, rapid prototyping, and end-to-end delivery for software ideas that are expensive to get wrong.",
   note:
-    "A stronger long-term direction than a general development company: narrower positioning, clearer authority, cleaner sales, and more defensible IP over time.",
+    "",
   links: [
     { href: "#offers", label: "Offers" },
     { href: "#process", label: "Process" },

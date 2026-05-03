@@ -28,7 +28,7 @@ export interface SiteMeta {
 
 export interface HeaderContent {
   navItems: NavItem[];
-  secondaryAction: ActionLink;
+  secondaryAction?: ActionLink;
   contactAction: ActionLink;
 }
 

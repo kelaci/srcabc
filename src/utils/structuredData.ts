@@ -38,6 +38,7 @@ export const buildDefaultStructuredData = (
         "Research sprint",
         "Prototype sprint",
         "System blueprint",
+        "End-to-end build",
         "Advisory retainer",
       ],
       contactPoint: {

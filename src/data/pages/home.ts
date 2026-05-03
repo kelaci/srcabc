@@ -8,25 +8,25 @@ const emailAction = {
 
 export const homePageData: HomePageData = {
   hero: {
-    eyebrow: "Applied research & systems prototyping studio",
+    eyebrow: "Applied research, rapid prototyping, and end-to-end delivery.",
     titleLead: "Software ideas that are expensive to get",
     titleAccent: "wrong.",
     intro: siteMeta.description,
-    primaryAction: emailAction,
-    secondaryAction: { href: "#proof", label: "See public work" },
+    primaryAction: { href: "#proof", label: "See public work" },
+    secondaryAction: emailAction,
     signalLabel: "What you buy",
     signalItems: [
       "Research sprint",
       "Working prototype",
       "System blueprint",
-      "Founder / CTO advisory",
+      "End-to-end execution",
     ],
     metrics: [
       {
         label: "Positioning",
-        title: "Research → Prototype → Transfer",
+        title: "Research → Prototype → Blueprint → Build",
         description:
-          "A clear path from ambiguity to a sharper decision, a working asset, and a buildable next step.",
+          "A clear path from ambiguity to a sharper decision, a working asset, and a fully scalable production system.",
       },
       {
         label: "Why it works",
@@ -34,19 +34,13 @@ export const homePageData: HomePageData = {
         description:
           "Best for risky ideas, new technical bets, and premium digital experiences where guessing would be expensive.",
       },
-      {
-        label: "Proof model",
-        title: "Public R&D + shipped demos.",
-        description:
-          "Open research, browser-based tools, and polished technical storytelling.",
-      },
     ],
-    statusChips: ["Founder-led", "High-signal engagements"],
+    statusChips: ["Founder-led engagements"],
     panelLabel: "Core model",
-    panelTitle: "Research-led delivery.",
-    panelKicker: "Applied research first. Elegant execution second. Commodity work never.",
+    panelTitle: "Applied research first. Elegant execution second. Commodity work never.",
+    panelKicker: "",
     panelCopy:
-      "Senior judgment, direct execution, and no agency-style delivery fog. SRCABC is not a generic development shop, and not a pure think tank. The studio is strongest when a project needs sharp technical judgment, a convincing working demo, and a final recommendation the client can actually build on.",
+      "Senior judgment, direct execution, and no agency-style delivery fog. SRCABC is not a generic development shop, and not a pure think tank. The studio is strongest when a project needs sharp technical judgment, a convincing working demo, and a partner who can take responsibility for the final end-to-end build.",
     coreCards: [
       {
         icon: "R",
@@ -61,26 +55,26 @@ export const homePageData: HomePageData = {
           "Interactive demos and working proofs that reduce uncertainty fast.",
       },
       {
-        icon: "S",
-        title: "System thinking",
+        icon: "A",
+        title: "Architecture & Blueprint",
         description:
-          "Architecture, interface boundaries, constraints, tradeoffs, and build-ready next steps.",
+          "System design, interface boundaries, scalability constraints, and build-ready foundations.",
       },
       {
-        icon: "N",
-        title: "Narrative polish",
+        icon: "E",
+        title: "End-to-End Execution",
         description:
-          "Premium presentation for stakeholder alignment, investor demos, and product storytelling.",
+          "Turning validated concepts into scalable, production-ready digital ecosystems.",
       },
     ],
     panelNote:
-      "early product bets, AI features with unclear UX or architecture, premium technical showcases, internal tools that need strategic clarity, and R&D-heavy concepts that must become legible to buyers, investors, or internal stakeholders.",
+      "early product bets, AI integrations with unclear UX or architecture, premium technical showcases, internal tools that need strategic clarity, and complex systems that demand flawless delivery.",
   },
   offers: {
     eyebrow: "What you can buy",
-    title: "Productized offers instead of vague consulting.",
+    title: "Clear engagements instead of vague consulting.",
     description:
-      "Four focused offers — from the first validation step to ongoing strategic closeness. Each one is designed to produce a clearer decision, a faster validation loop, and a more persuasive technical asset.",
+      "From the first validation step to full-scale execution and ongoing strategic closeness. Each phase is designed to produce a clearer decision and a more robust asset.",
     tabs: [
       { id: "all", label: "All" },
       { id: "early", label: "Early validation" },
@@ -91,41 +85,49 @@ export const homePageData: HomePageData = {
       {
         title: "Research Sprint",
         description:
-          "Clarify the space, frame the bet, and identify where the real technical or product risk actually sits — before committing serious resources.",
+          "Clarify the space, frame the bet, and identify where the real technical or product risk actually sits—before committing serious resources.",
         meta: ["1–2 weeks", "Best first step"],
         kinds: ["all", "early"],
         bullets: [
           "Competitive and technical landscape",
-          "Risk map, decision criteria, and benchmark plan",
-          "Clear recommendation memo for founders or leads",
-          "Ideal before committing to architecture or roadmap",
+          "Risk map and decision criteria",
+          "Executive recommendation memo",
         ],
       },
       {
         title: "Prototype Sprint",
         description:
           "Build a working proof that makes the opportunity, the user experience, and the technical shape clear to decision-makers.",
-        meta: ["3–6 weeks", "Highest leverage"],
+        meta: ["3–6 weeks", "Maximum impact"],
         kinds: ["all", "early", "build"],
         emphasis: true,
         bullets: [
-          "Interactive proof-of-concept or technical demonstrator",
-          "Measured evidence, not vanity outputs",
-          "Designed for stakeholder buy-in and next-step clarity",
-          "Strong fit for AI tools, interactive products, and novel workflows",
+          "Interactive proof-of-concept (PoC)",
+          "Measured evidence, not just vanity metrics",
+          "Designed specifically for stakeholder and investor buy-in",
         ],
       },
       {
         title: "System Blueprint",
         description:
-          "Turn a validated concept into something a product or engineering team can continue building with confidence.",
-        meta: ["4–8 weeks", "Transfer-ready"],
+          "Turn a validated concept into a robust technical plan that guarantees a flawless final build.",
+        meta: ["4–8 weeks", "Solid foundations"],
         kinds: ["all", "build"],
         bullets: [
-          "Architecture outline, interfaces, constraints, and tradeoffs",
-          "Implementation path with sequencing recommendations",
-          "Handover package for an internal team or external partner",
-          "Strong fit for products leaving R&D mode",
+          "Architecture outline, interfaces, and tradeoffs",
+          "Implementation sequencing recommendations",
+        ],
+      },
+      {
+        title: "End-to-End Build",
+        description:
+          "Based on validated blueprints, we build the scalable, live product. From coding to infrastructure and ecosystem integration, we carry the project to the finish line.",
+        meta: ["Months", "Full execution"],
+        kinds: ["all", "build"],
+        bullets: [
+          "Stable, production-level software development",
+          "Full ecosystem design and implementation",
+          "Turnkey delivery",
         ],
       },
       {
@@ -136,18 +138,17 @@ export const homePageData: HomePageData = {
         kinds: ["all", "ongoing"],
         bullets: [
           "Ongoing decision support for founders and engineering leads",
-          "Review of vendor choices, product directions, and prototypes",
-          "Research memos and strategic sparring on demand",
-          "Best after an initial sprint, prototype, or system blueprint",
+          "Review of vendor choices and product directions",
+          "Strategic sparring on demand",
         ],
       },
     ],
   },
   process: {
     eyebrow: "Operating model",
-    title: "Research → Prototype → Transfer",
+    title: "Research → Prototype → Blueprint → Build",
     description:
-      "This is the operating spine of the studio. It keeps the work out of two common traps: vague innovation consulting on one side, commodity implementation on the other.",
+      "This is the operating spine of the studio. It keeps the work out of two common traps: vague innovation consulting on one side, and blind commodity implementation on the other.",
     steps: [
       {
         index: "01",
@@ -157,8 +158,8 @@ export const homePageData: HomePageData = {
           "Map the opportunity, challenge the assumptions, and decide what deserves to be measured instead of merely discussed.",
         bullets: [
           "Landscape and comparable solutions",
-          "Failure modes and unknowns",
-          "Decision memo with options and tradeoffs",
+          "Failure modes and risk mapping",
+          "Decision memo before writing the first line of code",
         ],
       },
       {
@@ -168,21 +169,32 @@ export const homePageData: HomePageData = {
         description:
           "Build the minimum working artifact that reveals the truth: what works, what breaks, and what stakeholders finally understand once they can interact with it.",
         bullets: [
-          "Working concept or browser-based demonstrator",
+          "Browser-based demonstrators and proofs-of-concept",
           "UX and technical constraints made visible",
-          "Evidence instead of slideware",
+          "Evidence instead of slide decks",
         ],
       },
       {
         index: "03",
-        label: "Transfer",
-        title: "Hand over cleanly.",
+        label: "Blueprint",
+        title: "Design for scale.",
         description:
-          "Package the result so an internal team, product organization, or future engineering partner can move from prototype to real build without guesswork.",
+          "Turn the validated concept into a robust technical architecture. No guesswork, just a clear path to a stable business system.",
         bullets: [
-          "System blueprint and next-step architecture",
-          "Implementation notes and sequencing",
-          "Clear recommendation: scale, refine, or stop",
+          "Architecture outline, interfaces, and constraints",
+          "Implementation path and resource sequencing",
+        ],
+      },
+      {
+        index: "04",
+        label: "Build",
+        title: "End-to-end delivery.",
+        description:
+          "Once the concept is proven, we build the final product. We handle the full product development life cycle, integrate it into your existing systems, and deliver a sustainable digital ecosystem.",
+        bullets: [
+          "Production-grade software engineering",
+          "Ecosystem integration and deployment",
+          "Turnkey solution delivery",
         ],
       },
     ],
@@ -191,7 +203,7 @@ export const homePageData: HomePageData = {
     eyebrow: "Public proof",
     title: "Show the work. Then ask for trust.",
     description:
-      "A new studio should not lead with inflated claims. It should lead with visible evidence. These public references support the positioning more strongly than generic agency language ever could.",
+      "A new studio should not lead with inflated claims. It should lead with visible evidence.",
     items: [
       {
         title: "ORTHOS",
@@ -203,8 +215,8 @@ export const homePageData: HomePageData = {
       {
         title: "PRISM",
         description:
-          "A live, browser-based technical product. It shows that complex technical logic can become a real user-facing tool — not just a research note.",
-        meta: ["Browser tool", "Prototype craft"],
+          "A live, browser-based technical product. It shows that complex technical logic can become a real, scalable, user-facing tool — not just a research note.",
+        meta: ["Browser tool", "Production craft"],
         link: { href: "https://prism.srcabc.com/", label: "Open project →" },
       },
       {
@@ -220,28 +232,26 @@ export const homePageData: HomePageData = {
     eyebrow: "Where this wins",
     title: "Best fit — and what to avoid.",
     description:
-      "A strong position gets stronger when it is selective. The goal is not to say yes to every brief. The goal is to become the obvious choice for a narrow class of high-value problems.",
+      "A strong position gets stronger when it is selective. The goal is to become the obvious choice for a narrow class of high-value problems and complex deliveries.",
     cards: [
       {
         label: "Great fit",
         title: "High-stakes, unclear, or unusually visible work.",
         bullets: [
-          "New product bets with architecture uncertainty",
-          "AI features where UX, workflow, and system shape are still unresolved",
-          "Interactive technical demos for founders, investors, or enterprise buyers",
-          "R&D-heavy concepts that need convincing proof and a cleaner story",
-          "Premium digital experiences where taste and technical clarity both matter",
+          "Complex product delivery where you want validation, architecture, and execution in one reliable hand.",
+          "New product bets with architecture uncertainty.",
+          "AI features where workflow and system shape are still unresolved.",
+          "Premium digital experiences where taste, scalability, and technical clarity all matter.",
         ],
       },
       {
         label: "Not the main lane",
-        title: "Commodity implementation and endless delivery.",
+        title: "Commodity implementation.",
         bullets: [
-          "Generic staffing replacement or low-margin ticket work",
-          "Large maintenance-heavy projects without a research or prototype angle",
-          "Feature-factory work where speed matters more than judgment",
-          "Projects that need a large retained delivery team instead of founder-level thinking",
-          "Vague innovation briefs with no decision, proof, or business outcome attached",
+          "Generic staffing replacement or low-margin ticket work (\"we need two more devs\").",
+          "Large maintenance-heavy projects without a research or modernization angle.",
+          "Feature-factory work where speed matters more than judgment.",
+          "Vague innovation briefs with no decision or business outcome attached.",
         ],
       },
     ],
@@ -252,38 +262,35 @@ export const homePageData: HomePageData = {
     description: "",
     items: [
       {
-        label: "Model",
-        question: "Is this a research studio or a development studio?",
+        label: "Scope",
+        question: "Do you build production systems end-to-end?",
         answer: [
-          "Both, but in a specific order: research first, prototype second, transfer third.",
-          "The point is not to become a full-service agency. The point is to reduce uncertainty fast, make the right thing tangible, and hand over a sharper next step.",
+          "Yes. If we have jointly proven the concept's viability during the research and prototype phases, we take full responsibility for executing the final software, integrating it, and delivering a sustainable digital ecosystem.",
+          "We don't design for the drawer.",
         ],
       },
       {
-        label: "Scope",
-        question: "Do you build production systems end to end?",
+        label: "Model",
+        question: "Is this a research studio or a development studio?",
         answer: [
-          "Not as the default model.",
-          "SRCABC usually works up to validation, prototype, and build-ready architecture. From there, the production build can be continued by an internal team or a trusted engineering partner.",
-          "We can support the handover, review key decisions, and stay close to the build — but we do not sell large-scale commodity delivery.",
+          "Both, but in a strict order: research first, prototype second, architecture third, and full execution last.",
+          "We never code blindly. We reduce uncertainty, prove the concept, and then deliver without compromise.",
         ],
       },
       {
         label: "Buyers",
         question: "Who usually buys this kind of work?",
         answer: [
-          "Founders and CTOs facing expensive architecture decisions.",
-          "Product leaders who need a persuasive interactive demo for investors, enterprise buyers, or internal stakeholders.",
-          "Engineering teams trying to move an R&D-heavy concept toward something concrete enough to build, fund, or stop with confidence.",
+          "Founders, CEOs, and investors who don't want cookie-cutter solutions.",
+          "Leaders who need a scalable, reliable system and know that starting a build blindly costs magnitudes more than proper validation.",
         ],
       },
       {
         label: "Commercial",
         question: "Why is this model stronger long-term than a generic agency?",
         answer: [
-          "A generic agency sells capacity.",
-          "SRCABC sells judgment.",
-          "The work is narrower, faster, and closer to the real decision: what should be built, what should be tested, what should be handed over, and what should be stopped before it becomes expensive.",
+          "Because we don't separate technical consulting from execution.",
+          "Agencies often just execute a specification. We validate the concept from a business and risk perspective first, and then take responsibility for building the entire digital ecosystem.",
         ],
       },
     ],
@@ -292,11 +299,11 @@ export const homePageData: HomePageData = {
     eyebrow: "Final CTA",
     title: "Bring the risky idea. Leave the vague brief behind.",
     description:
-      "The strongest first conversation is usually about a technical decision, a product bet, or a demo that needs to exist before anyone can commit real budget. That is the lane SRCABC is built for.",
+      "The strongest first conversation is usually about a technical decision, a complex ecosystem build, or a product bet that needs validation before anyone commits real capital. That is the lane SRCABC is built for.",
     pills: [
       "Founder-led conversations",
       "No inflated claims",
-      "Built for high-signal work",
+      "Built for high-signal work and end-to-end delivery",
     ],
     primaryAction: emailAction,
     copyButtonLabel: "Copy email",

@@ -59,7 +59,7 @@ const { content } = Astro.props;
       <div>
         <div class="micro-label">{content.panelLabel}</div>
         <h2 class="hero-panel-title">{content.panelTitle}</h2>
-        <p class="hero-panel-kicker">{content.panelKicker}</p>
+        {content.panelKicker && <p class="hero-panel-kicker">{content.panelKicker}</p>}
         <p class="hero-panel-copy">{content.panelCopy}</p>
       </div>
 

@@ -405,7 +405,7 @@ h1 {
 
 .hero-proof {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 14px;
   margin-top: auto;
 }
@@ -455,7 +455,7 @@ h1 {
 }
 
 .hero-panel-title {
-  max-width: 14ch;
+  max-width: 22ch;
   margin: 10px 0 8px;
   color: var(--soft);
   font: 700 clamp(1.45rem, 2.4vw, 2rem) / 1.05 Inter, system-ui, sans-serif;
@@ -562,21 +562,22 @@ section {
 
 .section-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 20px;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 14px;
   margin-bottom: 28px;
 }
 
 .section-head h2 {
   margin: 10px 0 8px;
-  max-width: 12ch;
+  max-width: 100%;
   font-size: clamp(2.2rem, 4vw, 4rem);
   line-height: 0.98;
+  text-wrap: balance;
 }
 
 .section-head p {
-  max-width: 46rem;
+  max-width: 58rem;
   margin: 0;
   color: var(--muted);
   font-size: 1.04rem;
@@ -645,7 +646,7 @@ section {
 }
 
 .offers-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .offer-card,
@@ -751,7 +752,7 @@ section {
 }
 
 .process-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .process-index {
@@ -952,9 +953,9 @@ section {
 }
 
 .js .reveal {
-  opacity: 0;
+  opacity: 1;
   transform: translateY(18px);
-  transition: opacity 500ms ease, transform 500ms ease;
+  transition: transform 500ms ease;
 }
 
 .js .reveal.in-view {

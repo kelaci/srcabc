@@ -21,7 +21,11 @@ const { content } = Astro.props;
     </nav>
 
     <div class="nav-actions">
-      <a class="button-ghost" href={content.secondaryAction.href}>{content.secondaryAction.label}</a>
+      {
+        content.secondaryAction && (
+          <a class="button-ghost" href={content.secondaryAction.href}>{content.secondaryAction.label}</a>
+        )
+      }
       <a class="button" href={content.contactAction.href}>{content.contactAction.label}</a>
       <button
         aria-controls="navMobile"

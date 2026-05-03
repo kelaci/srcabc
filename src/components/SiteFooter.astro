@@ -13,7 +13,7 @@ const { content } = Astro.props;
     <div class="footer-col">
       <a class="brand" href="#top">src<span>abc</span>.com</a>
       <p style="max-width: 36rem; margin: 16px 0 0;">{content.summary}</p>
-      <div class="footer-note">{content.note}</div>
+      {content.note && <div class="footer-note">{content.note}</div>}
     </div>
 
     <div class="footer-col">
