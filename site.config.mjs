@@ -3,7 +3,7 @@ export const siteConfig = {
   titleTemplate: "%s | SRCABC",
   defaultPageTitle: "Applied Research Systems Studio",
   description:
-    "SRCABC helps founders and engineering teams validate AI, interactive, and systems-level product bets through benchmark-driven research, working prototypes, and build-ready architecture.",
+    "SRCABC helps founders, CTOs, and engineering teams validate AI, interactive, and systems-level product bets through benchmark-driven research, working prototypes, and build-ready architecture — before real budget moves.",
   email: "hello@srcabc.com",
   url: "https://srcabc.com",
   siteName: "SRCABC",
@@ -19,5 +19,12 @@ export const siteConfig = {
     "technical prototype",
     "founder advisory",
     "interactive demo development",
+  ],
+  alternateLocales: [
+    {
+      href: "https://hu.srcabc.com",
+      hreflang: "hu-HU",
+      locale: "hu_HU",
+    },
   ],
 };

@@ -6,6 +6,10 @@ interface StructuredDataOptions {
   faqItems?: FaqItem[];
   breadcrumbItems?: { name: string; url: string }[];
 }
+
+const toStructuredAnswerText = (answer: FaqItem["answer"]) =>
+  Array.isArray(answer) ? answer.join("\n\n") : answer;
+
 export const buildDefaultStructuredData = (
   options: StructuredDataOptions = {}
 ): StructuredData[] => {
@@ -75,7 +79,7 @@ export const buildDefaultStructuredData = (
         name: item.question,
         acceptedAnswer: {
           "@type": "Answer",
-          text: item.answer,
+          text: toStructuredAnswerText(item.answer),
         },
       })),
     });

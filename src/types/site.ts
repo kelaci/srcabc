@@ -5,6 +5,12 @@ export interface ActionLink {
 
 export type NavItem = ActionLink;
 
+export interface AlternateLocale {
+  href: string;
+  hreflang: string;
+  locale: string;
+}
+
 export interface SiteMeta {
   title: string;
   titleTemplate: string;
@@ -17,6 +23,7 @@ export interface SiteMeta {
   ogImage: string;
   ogImageAlt: string;
   keywords: string[];
+  alternateLocales?: AlternateLocale[];
 }
 
 export interface HeaderContent {
@@ -125,7 +132,7 @@ export interface FitSectionContent extends SectionIntroContent {
 export interface FaqItem {
   label: string;
   question: string;
-  answer: string;
+  answer: string | string[];
 }
 
 export interface FaqSectionContent extends SectionIntroContent {

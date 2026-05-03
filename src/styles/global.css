@@ -845,6 +845,14 @@ section {
   overflow: hidden;
 }
 
+.faq-answer-inner p {
+  margin: 0;
+}
+
+.faq-answer-inner p + p {
+  margin-top: 12px;
+}
+
 .faq-item.open .faq-answer {
   grid-template-rows: 1fr;
   margin-top: 14px;

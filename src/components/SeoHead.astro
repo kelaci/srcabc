@@ -34,6 +34,12 @@ const robotsContent = [
   "max-video-preview:-1",
 ].join(", ");
 const isHomePage = pathname === "/" || pathname === "";
+
+// Generate alternate locale URLs by replacing the base domain
+const alternateLocaleLinks = siteMeta.alternateLocales?.map((alt) => {
+  const altUrl = new URL(pathname, alt.href).href;
+  return { href: altUrl, hreflang: alt.hreflang };
+}) || [];
 ---
 
 <meta charset="UTF-8" />
@@ -50,6 +56,9 @@ const isHomePage = pathname === "/" || pathname === "";
 <meta name="apple-mobile-web-app-title" content={siteMeta.siteName} />
 <meta name="keywords" content={siteMeta.keywords.join(", ")} />
 
+{alternateLocaleLinks.map((link) => (
+  <link rel="alternate" href={link.href} hreflang={link.hreflang} />
+))}
 <link rel="alternate" href={canonical} hreflang="en" />
 <link rel="alternate" href={canonical} hreflang="x-default" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

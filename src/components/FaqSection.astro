@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { content } = Astro.props;
+
+const toParagraphs = (answer: string | string[]) =>
+  Array.isArray(answer) ? answer : [answer];
 ---
 
 <section id="faq">
@@ -46,7 +49,11 @@ const { content } = Astro.props;
                 id={answerId}
                 role="region"
               >
-                <div class="faq-answer-inner">{item.answer}</div>
+                <div class="faq-answer-inner">
+                  {toParagraphs(item.answer).map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </article>
           );
