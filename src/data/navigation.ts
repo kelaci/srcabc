@@ -9,24 +9,25 @@ const contactAction = {
 export const headerContent: HeaderContent = {
   navItems: [
     { href: "#offers", label: "Offers" },
-    { href: "#process", label: "Process" },
-    { href: "#proof", label: "Public Work" },
-    { href: "#fit", label: "Fit" },
-    { href: "#faq", label: "FAQ" },
+    { href: "#process", label: "Method" },
+    { href: "#proof", label: "Public work" },
+    { href: "#contact", label: "Contact" },
   ],
+  secondaryAction: { href: "#process", label: "Process" },
   contactAction,
 };
 
 export const footerContent: FooterContent = {
   summary:
-    "Applied research, rapid prototyping, and end-to-end delivery for software ideas that are expensive to get wrong.",
+    "Testing software ideas, building working prototypes, and shipping the finished system.",
   note:
-    "",
+    "Founder-led. No inflated claims. Specialized in critical phases and full execution.",
   links: [
     { href: "#offers", label: "Offers" },
-    { href: "#process", label: "Process" },
+    { href: "#process", label: "Method" },
     { href: "#proof", label: "Public work" },
     { href: "#contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
   ],
   references: [
     { href: "https://github.com/kelaci/orthos", label: "GitHub — ORTHOS →" },

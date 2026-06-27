@@ -1,0 +1,34 @@
+---
+import SectionIntro from "./common/SectionIntro.astro";
+import type { ProblemSectionContent } from "../types/site";
+
+interface Props {
+  content: ProblemSectionContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id="problem">
+  <div class="container">
+    <SectionIntro
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
+    />
+
+    <div class="problem-grid">
+      <article class="problem-card reveal">
+        <div class="problem-lines">
+          {content.lines.map((line) => <p>{line}</p>)}
+        </div>
+        <strong>{content.conclusion}</strong>
+      </article>
+      <article class="problem-card reveal">
+        <ul class="bullet-list">
+          {content.bullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

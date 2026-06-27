@@ -17,27 +17,217 @@ const { content } = Astro.props;
       description={content.description}
     />
 
-    <div class="proof-grid">
-      {
-        content.items.map((item) => (
-          <article class="proof-card reveal">
-            <div class="offer-meta">
-              {
-                item.meta.map((meta) => (
-                  <span class="tag">{meta}</span>
-                ))
-              }
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <div class="proof-links">
-              <a class="button-line" href={item.link.href} rel="noreferrer" target="_blank">
-                {item.link.label}
-              </a>
-            </div>
-          </article>
-        ))
-      }
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">srcabc --list-projects</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="terminal-prompt">$</span>
+          <span class="terminal-cmd">srcabc --list-projects --public</span>
+        </div>
+        <div class="terminal-output">
+          {
+            content.items.map((item) => (
+              <div class="terminal-entry">
+                <div class="terminal-entry-header">
+                  <span class="terminal-name">{item.title}</span>
+                  <span class="terminal-status">active</span>
+                </div>
+                <p class="terminal-desc">{item.description}</p>
+                <div class="terminal-meta">
+                  {item.meta.map((meta) => (
+                    <span class="terminal-tag">{meta}</span>
+                  ))}
+                  <a
+                    class="terminal-link"
+                    href={item.link.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {item.link.label}
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .terminal {
+    border: 1px solid var(--line);
+    border-radius: 0;
+    overflow: hidden;
+    background: rgba(4, 8, 16, 0.92);
+    box-shadow: var(--shadow), 0 0 0 1px rgba(183, 196, 255, 0.06);
+    font-family: JetBrains Mono, monospace;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(183, 196, 255, 0.08);
+    background: rgba(0, 0, 0, 0.32);
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .terminal-dot:first-child {
+    background: #ff5f56;
+  }
+  .terminal-dot:nth-child(2) {
+    background: #ffbd2e;
+  }
+  .terminal-dot:nth-child(3) {
+    background: #27c93f;
+  }
+
+  .terminal-title {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .terminal-body {
+    padding: 18px 20px 22px;
+  }
+
+  .terminal-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(183, 196, 255, 0.06);
+  }
+
+  .terminal-prompt {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+
+  .terminal-cmd {
+    color: var(--soft);
+    font-size: 0.88rem;
+    opacity: 0.85;
+  }
+
+  .terminal-output {
+    display: grid;
+    gap: 16px;
+  }
+
+  .terminal-entry {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(183, 196, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.18s ease, background 0.18s ease;
+  }
+
+  .terminal-entry:hover {
+    border-color: rgba(183, 196, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .terminal-entry-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .terminal-name {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 0.98rem;
+    line-height: 1;
+  }
+
+  .terminal-status {
+    color: #27c93f;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(39, 201, 63, 0.2);
+    background: rgba(39, 201, 63, 0.06);
+  }
+
+  .terminal-desc {
+    color: var(--muted);
+    font-size: 0.83rem;
+    line-height: 1.5;
+    margin: 0 0 12px;
+    font-family: Inter, system-ui, sans-serif;
+    text-align: justify;
+  }
+
+  .terminal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .terminal-tag {
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(183, 196, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .terminal-link {
+    color: var(--primary);
+    font-size: 0.82rem;
+    text-decoration: none;
+    margin-left: auto;
+    transition: color 0.14s ease;
+    font-family: Inter, system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  .terminal-link:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 580px) {
+    .terminal {
+      border-radius: 16px;
+    }
+    .terminal-bar {
+      padding: 10px 14px;
+    }
+    .terminal-body {
+      padding: 14px 14px 18px;
+    }
+    .terminal-entry {
+      padding: 12px;
+    }
+    .terminal-title {
+      display: none;
+    }
+  }
+</style>

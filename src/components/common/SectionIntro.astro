@@ -11,7 +11,7 @@ const { eyebrow, title, description, reveal = true } = Astro.props;
 
 <div class:list={["section-head", reveal && "reveal"]}>
   <div>
-    <span class="eyebrow"><span class="dot"></span> {eyebrow}</span>
+    <span class="eyebrow"><span class="dot"></span><span class="eyebrow-text">{eyebrow}</span></span>
     <h2>{title}</h2>
   </div>
   {description && <p>{description}</p>}

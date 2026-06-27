@@ -190,6 +190,42 @@ const initActiveNavState = () => {
   setActiveLink();
 };
 
+const COOKIE_NOTICE_KEY = "srcabc-cookie-notice";
+
+const initCookieNotice = () => {
+  const notice = document.querySelector("[data-cookie-notice]");
+  const accept = document.querySelector("[data-cookie-accept]");
+  if (!(notice instanceof HTMLElement) || !(accept instanceof HTMLButtonElement)) {
+    return;
+  }
+
+  // ponytail: localStorage may throw (private mode / disabled storage); fall back to per-session in-memory.
+  let accepted = false;
+  try {
+    accepted = localStorage.getItem(COOKIE_NOTICE_KEY) === "ok";
+  } catch {
+    /* storage unavailable */
+  }
+
+  if (accepted) {
+    return;
+  }
+
+  notice.hidden = false;
+  accept.addEventListener(
+    "click",
+    () => {
+      notice.hidden = true;
+      try {
+        localStorage.setItem(COOKIE_NOTICE_KEY, "ok");
+      } catch {
+        /* storage unavailable; banner stays dismissed for this session */
+      }
+    },
+    { once: true }
+  );
+};
+
 const initSite = () => {
   initMobileNav();
   initOfferFilters();
@@ -197,6 +233,7 @@ const initSite = () => {
   initCopyEmail();
   initRevealAnimations();
   initActiveNavState();
+  initCookieNotice();
 };
 
 if (document.readyState === "loading") {

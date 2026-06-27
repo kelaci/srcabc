@@ -12,7 +12,7 @@ const { content } = Astro.props;
   <div class="container">
     <div class="cta-shell reveal">
       <div>
-        <span class="eyebrow"><span class="dot"></span> {content.eyebrow}</span>
+        <span class="eyebrow"><span class="dot"></span><span class="eyebrow-text">{content.eyebrow}</span></span>
         <h2>{content.title}</h2>
         <p>{content.description}</p>
         <div class="contact-meta">
@@ -24,22 +24,24 @@ const { content } = Astro.props;
         </div>
       </div>
 
-      <div class="cta-actions">
-        <a class="button" href={content.primaryAction.href}>
-          {content.primaryAction.label}
-        </a>
-        <button
-          aria-describedby="copy-email-status"
-          aria-label={`Copy email address ${content.primaryAction.label}`}
-          class="button-ghost"
-          data-copy-email
-          data-copy-success={content.copyAnnouncement}
-          data-email={content.primaryAction.label}
-          type="button"
-        >
-          {content.copyButtonLabel}
-        </button>
-        <p class="sr-only" id="copy-email-status" aria-live="polite" role="status" data-copy-status></p>
+      <div class="contact-side">
+        <div class="contact-form-card">
+          <div class="contact-person">
+            <img
+              alt={content.person.photoAlt}
+              decoding="async"
+              height="256"
+              loading="lazy"
+              src={content.person.photo}
+              width="256"
+            />
+            <div>
+              <strong>{content.person.name}</strong>
+              <a href={content.person.email.href}>{content.person.email.label}</a>
+              <a href={content.person.phone.href}>{content.person.phone.label}</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 export const siteConfig = {
   title: "SRCABC",
   titleTemplate: "%s | SRCABC",
-  defaultPageTitle: "Applied Research Systems Studio",
+  defaultPageTitle: "Software idea validation, prototype, and execution",
   description:
-    "SRCABC helps founders, CTOs, and engineering teams validate AI, interactive, and systems-level product bets. We move from benchmark-driven research to working prototypes, build-ready architecture, and fully executed digital ecosystems—before you commit blind capital.",
+    "SRCABC tests software ideas, builds a working prototype, and turns the proven concept into a finished, production system.",
   email: "hello@srcabc.com",
   url: "https://srcabc.com",
   siteName: "SRCABC",

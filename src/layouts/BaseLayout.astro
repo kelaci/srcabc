@@ -70,6 +70,26 @@ const resolvedStructuredData = noindex
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div id="top"></div>
     <slot />
+    <aside
+      class="cookie-notice"
+      data-cookie-notice
+      role="region"
+      aria-label="Privacy notice"
+      hidden
+    >
+      <p class="cookie-notice__text">
+        This site uses cookie-free, privacy-friendly visitor analytics
+        (Cloudflare Web Analytics). We don't store cookies and we don't track
+        personal data.
+        <a class="cookie-notice__link" href="/privacy">Details</a>
+      </p>
+      <button type="button" class="cookie-notice__accept" data-cookie-accept>
+        Got it
+      </button>
+    </aside>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ccf97cf4d9af41058159e67984c8ac3d"}' is:inline></script>
+    <!-- End Cloudflare Web Analytics -->
     <script src="/scripts/site.client.js" type="module" is:inline></script>
   </body>
 </html>

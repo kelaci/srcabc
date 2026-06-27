@@ -4,6 +4,7 @@ import FaqSection from "../components/FaqSection.astro";
 import FitSection from "../components/FitSection.astro";
 import HeroSection from "../components/HeroSection.astro";
 import OffersSection from "../components/OffersSection.astro";
+import ProblemSection from "../components/ProblemSection.astro";
 import ProcessSection from "../components/ProcessSection.astro";
 import ProofSection from "../components/ProofSection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -17,10 +18,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <SiteHeader content={headerContent} />
   <main id="main-content" tabindex="-1">
     <HeroSection content={homePageData.hero} />
-    <OffersSection content={homePageData.offers} />
+    <ProblemSection content={homePageData.problem} />
     <ProcessSection content={homePageData.process} />
-    <ProofSection content={homePageData.proof} />
+    <OffersSection content={homePageData.offers} />
     <FitSection content={homePageData.fit} />
+    <ProofSection content={homePageData.proof} />
     <FaqSection content={homePageData.faq} />
     <ContactSection content={homePageData.contact} />
   </main>

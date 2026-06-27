@@ -47,8 +47,9 @@ export interface HeroMetric {
 }
 
 export interface CoreCard {
-  icon: string;
+  icon: "search" | "play" | "grid" | "check";
   title: string;
+  subtitle: string;
   description: string;
 }
 
@@ -101,11 +102,21 @@ export interface ProcessStep {
   label: string;
   title: string;
   description: string;
+  deliverable: string;
+  duration: string;
   bullets: string[];
 }
 
+export type ProcessPhase = "research" | "proto" | "arch" | "build";
+
 export interface ProcessSectionContent extends SectionIntroContent {
   steps: ProcessStep[];
+}
+
+export interface ProblemSectionContent extends SectionIntroContent {
+  lines: string[];
+  conclusion: string;
+  bullets: string[];
 }
 
 export interface ProofItem {
@@ -139,18 +150,25 @@ export interface FaqSectionContent extends SectionIntroContent {
   items: FaqItem[];
 }
 
+export interface ContactPerson {
+  name: string;
+  photo: string;
+  photoAlt: string;
+  email: ActionLink;
+  phone: ActionLink;
+}
+
 export interface ContactSectionContent {
   eyebrow: string;
   title: string;
   description: string;
   pills: string[];
-  primaryAction: ActionLink;
-  copyButtonLabel: string;
-  copyAnnouncement: string;
+  person: ContactPerson;
 }
 
 export interface HomePageData {
   hero: HeroContent;
+  problem: ProblemSectionContent;
   offers: OffersSectionContent;
   process: ProcessSectionContent;
   proof: ProofSectionContent;

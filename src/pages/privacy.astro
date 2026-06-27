@@ -1,0 +1,52 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { footerContent, headerContent } from "../data/navigation";
+import { siteMeta } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy"
+  description="How SRCABC handles your data: cookie-free analytics, no tracking, no personal data sold or shared."
+  structuredData={[]}
+>
+  <SiteHeader content={headerContent} />
+  <main id="main-content" tabindex="-1" class="container" style="padding: 96px 0 120px;">
+    <div class="section-card" style="padding: 40px; max-width: 760px;">
+      <span class="eyebrow"><span class="dot"></span> Privacy</span>
+      <h1 style="font-size: clamp(2.2rem, 6vw, 3.4rem); margin-bottom: 16px;">Privacy notice</h1>
+      <p class="lead" style="margin-bottom: 28px;">
+        Short version: we don't use cookies, we don't track you, and we don't
+        sell or share personal data.
+      </p>
+
+      <h2 style="margin-bottom: 8px;">Analytics</h2>
+      <p style="margin-bottom: 24px;">
+        We measure visits with
+        <a href="https://www.cloudflare.com/web-analytics/" rel="noopener" target="_blank">Cloudflare Web Analytics</a>,
+        which is privacy-first and cookie-free. It does not use cookies,
+        fingerprinting, or any client-side state, and it does not track you
+        across sites. We only see aggregate figures such as page views and
+        referrers — never anything that identifies you personally.
+      </p>
+
+      <h2 style="margin-bottom: 8px;">Contact</h2>
+      <p style="margin-bottom: 24px;">
+        If you email us at
+        <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>, we use your
+        message and address only to reply. We don't add you to any list.
+      </p>
+
+      <h2 style="margin-bottom: 8px;">Your rights</h2>
+      <p style="margin-bottom: 28px;">
+        Since we hold no personal analytics data, there's nothing to export or
+        delete on that front. For email correspondence, write to us and we'll
+        remove it on request.
+      </p>
+
+      <a class="button" href="/">Back to srcabc.com</a>
+    </div>
+  </main>
+  <SiteFooter content={footerContent} />
+</BaseLayout>
