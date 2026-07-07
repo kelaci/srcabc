@@ -17,13 +17,24 @@ export interface SiteMeta {
   defaultPageTitle: string;
   description: string;
   email: string;
+  telephone: string;
+  telephoneDisplay: string;
   url: string;
   siteName: string;
   locale: string;
   ogImage: string;
   ogImageAlt: string;
   keywords: string[];
+  sameAs: string[];
   alternateLocales?: AlternateLocale[];
+  founder: {
+    name: string;
+    jobTitle: string;
+    image: string;
+    imageAlt: string;
+    knowsLanguage: string[];
+    sameAs?: string[];
+  };
 }
 
 export interface HeaderContent {

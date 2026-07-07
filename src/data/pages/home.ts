@@ -6,6 +6,11 @@ const emailAction = {
   label: siteMeta.email,
 };
 
+const phoneAction = {
+  href: `tel:${siteMeta.telephone}`,
+  label: siteMeta.telephoneDisplay,
+};
+
 export const homePageData: HomePageData = {
   hero: {
     eyebrow: "Usable app fast, market validation, production system",
@@ -334,11 +339,11 @@ export const homePageData: HomePageData = {
       "Specialized in critical phases and full execution",
     ],
     person: {
-      name: "László Kenyeres",
-      photo: "/Kenyeres_Laszlo_256.webp",
-      photoAlt: "Portrait of László Kenyeres",
+      name: siteMeta.founder.name,
+      photo: siteMeta.founder.image,
+      photoAlt: siteMeta.founder.imageAlt,
       email: emailAction,
-      phone: { href: "tel:+36706518300", label: "+36 70 651 8300" },
+      phone: phoneAction,
     },
   },
 };

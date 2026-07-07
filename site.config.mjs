@@ -5,6 +5,8 @@ export const siteConfig = {
   description:
     "SRCABC tests software ideas, builds a working prototype, and turns the proven concept into a finished, production system.",
   email: "hello@srcabc.com",
+  telephone: "+36706518300",
+  telephoneDisplay: "+36 70 651 8300",
   url: "https://srcabc.com",
   siteName: "SRCABC",
   locale: "en_US",
@@ -20,6 +22,7 @@ export const siteConfig = {
     "founder advisory",
     "interactive demo development",
   ],
+  sameAs: ["https://twitter.com/srcabc"],
   alternateLocales: [
     {
       href: "https://hu.srcabc.com",
@@ -27,4 +30,11 @@ export const siteConfig = {
       locale: "hu_HU",
     },
   ],
+  founder: {
+    name: "László Kenyeres",
+    jobTitle: "Founder and software systems lead",
+    image: "/Kenyeres_Laszlo_256.webp",
+    imageAlt: "Portrait of László Kenyeres",
+    knowsLanguage: ["en", "hu"],
+  },
 };

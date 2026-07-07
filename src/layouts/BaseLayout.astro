@@ -1,5 +1,6 @@
 ---
 import SeoHead from "../components/SeoHead.astro";
+import { Font } from "astro:assets";
 import { siteMeta } from "../config/site";
 import stylesUrl from "../styles/global.css?url";
 import type { FaqItem, StructuredData } from "../types/site";
@@ -50,12 +51,21 @@ const resolvedStructuredData = noindex
       canonical={canonical}
       image={image}
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;600&display=swap"
-      rel="stylesheet"
+    <Font
+      cssVariable="--font-inter"
+      preload={[
+        { weight: 400, subset: "latin" },
+        { weight: 400, subset: "latin-ext" },
+      ]}
     />
+    <Font
+      cssVariable="--font-dm-serif"
+      preload={[
+        { weight: 400, subset: "latin" },
+        { weight: 400, subset: "latin-ext" },
+      ]}
+    />
+    <Font cssVariable="--font-jetbrains-mono" />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>
