@@ -35,21 +35,23 @@ const { content } = Astro.props;
               <div class="terminal-entry">
                 <div class="terminal-entry-header">
                   <span class="terminal-name">{item.title}</span>
-                  <span class="terminal-status">active</span>
+                  <span class="terminal-status">{item.status ?? "active"}</span>
                 </div>
                 <p class="terminal-desc">{item.description}</p>
                 <div class="terminal-meta">
                   {item.meta.map((meta) => (
                     <span class="terminal-tag">{meta}</span>
                   ))}
-                  <a
-                    class="terminal-link"
-                    href={item.link.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {item.link.label}
-                  </a>
+                  {item.link && (
+                    <a
+                      class="terminal-link"
+                      href={item.link.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {item.link.label}
+                    </a>
+                  )}
                 </div>
               </div>
             ))

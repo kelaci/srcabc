@@ -264,6 +264,13 @@ export const homePageData: HomePageData = {
         meta: ["Security", "Bot detection"],
         link: { href: "https://notabot.srcabc.com/", label: "Open notabot →" },
       },
+      {
+        title: "llmaudit PRO",
+        description:
+          "The llmaudit PRO system is in development to optimize LLM usage costs, manage access, and make evaluation workflows auditable. Tenant-scoped isolation, encrypted provider credentials, and an append-only audit log form the control layer.",
+        meta: ["LLM cost control", "Access management", "Auditability"],
+        status: "In development",
+      },
     ],
   },
   fit: {

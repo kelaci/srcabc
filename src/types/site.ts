@@ -134,7 +134,8 @@ export interface ProofItem {
   title: string;
   description: string;
   meta: string[];
-  link: ActionLink;
+  link?: ActionLink;
+  status?: string;
 }
 
 export interface ProofSectionContent extends SectionIntroContent {
